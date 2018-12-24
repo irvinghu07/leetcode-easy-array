@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /**
  * Development IDE: IntelliJ IDEA
  * Author: irving
@@ -25,20 +27,31 @@
 //        A.length % 2 == 0
 //        0 <= A[i] <= 1000
 public class SortArrayByParityII {
+    public static void main(String[] args) {
+        int[] A = {3, 1, 4, 2};
+        System.out.println(Arrays.toString(new SortArrayByParityII().sortArrayByParityII(A)));
+    }
+
     public int[] sortArrayByParityII(int[] A) {
-        int i = 0;
-        int j = A.length - 1;
-//        i <= A.length - 1 && j >= 0
-        while (i < j) {
-            while (i < A.length && isEven(A[i])) {
-                i++;
+        int i = 0, pivot = 0;
+        while (i + 1 < A.length) {
+            pivot = i + 1;
+            if (isEven(i)) {
+                if (!isEven(A[i])) {
+                    while (pivot < A.length && !isEven(A[pivot])) {
+                        pivot++;
+                    }
+                    swapValue(A, i, pivot);
+                }
+            } else {
+                if (isEven(A[i])) {
+                    while (pivot < A.length && isEven(A[pivot])) {
+                        pivot++;
+                    }
+                    swapValue(A, i, pivot);
+                }
             }
-            while (j >= 0 && !isEven(A[j])) {
-                j--;
-            }
-            if (i < A.length && j >= 0 && i <= j && !isEven(A[i]) && isEven(A[j])) {
-                swapValue(A, i, j);
-            }
+            i++;
         }
         return A;
     }
