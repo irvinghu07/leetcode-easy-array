@@ -1,5 +1,6 @@
 package medium;
 
+import java.awt.print.Pageable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -34,6 +35,21 @@ public class FindAllDuplicatesInAnArray {
                 set.add(nums[i]);
             } else {
                 ret.add(nums[i]);
+            }
+        }
+        return ret;
+    }
+
+    public List<Integer> findDuplicatesOptimal(int[] nums) {
+//        1 ≤ a[i] ≤ n
+        ArrayList<Integer> ret = new ArrayList<>();
+        for (int i = 0; i < nums.length; i++) {
+            int val = nums[i];
+            int index = Math.abs(val) - 1;
+            if (nums[index] < 0) {
+                ret.add(val < 0 ? -val : val);
+            } else {
+                nums[index] = -nums[index];
             }
         }
         return ret;
