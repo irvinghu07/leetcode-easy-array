@@ -6,11 +6,27 @@
  */
 public class LeetCodeUtils {
     public static void main(String[] args) {
-cleanArray("[[11,74,7,93],[40,11,74,7]]");
+cleanArray("[[1,2],\n" +
+        " * [3,4]]");
     }
     public static void cleanArray(String s){
         s = s.replaceAll("\\[", "{");
         s = s.replaceAll("\\]", "}");
         System.out.println(s);
+    }
+
+    public static void printArr(int[][] b) {
+        for (int i = 0; i < b.length; i++) {
+            for (int j = 0; j < b[0].length; j++) {
+                System.out.println(b[i][j]);
+            }
+            System.out.println("===================");
+        }
+    }
+
+    private static void swapValue(int[] a, int i, int j) {
+        int temp = a[i];
+        a[i] = a[j];
+        a[j] = temp;
     }
 }
