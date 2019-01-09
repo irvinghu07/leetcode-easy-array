@@ -36,6 +36,10 @@ import java.util.HashSet;
  * Note: The length of each dimension in the given grid does not exceed 50.
  */
 public class MaxAreaOfIsland {
+    private int[][] visited;
+
+    private int[][] grid;
+
     public static void main(String[] args) {
         int[][] grid = {{0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0},
@@ -46,17 +50,17 @@ public class MaxAreaOfIsland {
                 {0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0}};
         System.out.println(new MaxAreaOfIsland().maxAreaOfIsland(grid));
-        ;
     }
 
     public int maxAreaOfIsland(int[][] grid) {
         int max = 0, temp = 0;
-        HashSet<String> record = new HashSet<>();
+        this.visited = new int[grid.length][grid[0].length];
+        this.grid = grid;
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[0].length; j++) {
-                if (grid[i][j] == 1 && !record.contains(generateRecord(i, j))) {
+                if (grid[i][j] == 1 && visited[i][j] != 1) {
                     // find a candidate
-                    temp = traverse(record, grid, i, j);
+                    temp = traverse(i, j);
                     if (max < temp) {
                         max = temp;
                     }
@@ -66,57 +70,53 @@ public class MaxAreaOfIsland {
         return max;
     }
 
-    private int traverse(HashSet<String> record, int[][] grid, int i, int j) {
+    private int traverse(int i, int j) {
         int count = 1;
-        record.add(generateRecord(i, j));
-        if (findRight(record, grid, i, j)) {
-            record.add(generateRecord(i, j + 1));
-            count += traverse(record, grid, i, j + 1);
+        visited[i][j] = 1;
+        if (findRight(i, j)) {
+            visited[i][j + 1] = 1;
+            count += traverse(i, j + 1);
         }
-        if (findDown(record, grid, i, j)) {
-            record.add(generateRecord(i + 1, j));
-            count += traverse(record, grid, i + 1, j);
+        if (findDown(i, j)) {
+            visited[i + 1][j] = 1;
+            count += traverse(i + 1, j);
         }
-        if (findLeft(record, grid, i, j)) {
-            record.add(generateRecord(i, j - 1));
-            count += traverse(record, grid, i, j - 1);
+        if (findLeft(i, j)) {
+            visited[i][j - 1] = 1;
+            count += traverse(i, j - 1);
         }
-        if (findUp(record, grid, i, j)) {
-            record.add(generateRecord(i - 1, j));
-            count += traverse(record, grid, i - 1, j);
+        if (findUp(i, j)) {
+            visited[i - 1][j] = 1;
+            count += traverse(i - 1, j);
         }
         return count;
     }
 
-    private String generateRecord(int i, int j) {
-        return String.format("{%d-%d}", i, j);
-    }
-
-    private boolean findDown(HashSet<String> record, int[][] grid, int i, int j) {
-        if (record.contains(generateRecord(i + 1, j))) {
+    private boolean findDown(int i, int j) {
+        if (i + 1 >= grid.length || visited[i + 1][j] == 1) {
             return false;
         }
-        return i + 1 >= grid.length ? false : grid[i + 1][j] == 1;
+        return grid[i + 1][j] == 1;
     }
 
-    private boolean findRight(HashSet<String> record, int[][] grid, int i, int j) {
-        if (record.contains(generateRecord(i, j + 1))) {
+    private boolean findRight(int i, int j) {
+        if (j + 1 >= grid[0].length || visited[i][j + 1] == 1) {
             return false;
         }
-        return j + 1 >= grid[0].length ? false : grid[i][j + 1] == 1;
+        return grid[i][j + 1] == 1;
     }
 
-    private boolean findLeft(HashSet<String> record, int[][] grid, int i, int j) {
-        if (record.contains(generateRecord(i, j - 1))) {
+    private boolean findLeft(int i, int j) {
+        if (j - 1 < 0 || visited[i][j - 1] == 1) {
             return false;
         }
-        return j - 1 < 0 ? false : grid[i][j - 1] == 1;
+        return grid[i][j - 1] == 1;
     }
 
-    private boolean findUp(HashSet<String> record, int[][] grid, int i, int j) {
-        if (record.contains(generateRecord(i - 1, j))) {
+    private boolean findUp(int i, int j) {
+        if (i - 1 < 0 || visited[i - 1][j] == 1) {
             return false;
         }
-        return i - 1 < 0 ? false : grid[i - 1][j] == 1;
+        return grid[i - 1][j] == 1;
     }
 }
