@@ -1,4 +1,4 @@
-package easy;
+package utils;
 
 /**
  * Development IDE: IntelliJ IDEA
@@ -8,8 +8,7 @@ package easy;
  */
 public class LeetCodeUtils {
     public static void main(String[] args) {
-cleanArray("[[1,2],\n" +
-        " * [3,4]]");
+cleanArray("[17,13,11,2,3,5,7]");
     }
     public static void cleanArray(String s){
         s = s.replaceAll("\\[", "{");
