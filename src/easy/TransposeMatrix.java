@@ -1,3 +1,4 @@
+package easy;
 
 /**
  * Development IDE: IntelliJ IDEA

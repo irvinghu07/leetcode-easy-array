@@ -1,3 +1,5 @@
+package easy;
+
 /**
  * Development IDE: IntelliJ IDEA
  * Author: irving
