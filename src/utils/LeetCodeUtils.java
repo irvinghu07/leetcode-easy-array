@@ -8,16 +8,31 @@ package utils;
  */
 public class LeetCodeUtils {
     public static void main(String[] args) {
-cleanArray("[[0,0,1,0,0,0,0,1,0,0,0,0,0],\n" +
-        " [0,0,0,0,0,0,0,1,1,1,0,0,0],\n" +
-        " [0,1,1,0,1,0,0,0,0,0,0,0,0],\n" +
-        " [0,1,0,0,1,1,0,0,1,0,1,0,0],\n" +
-        " [0,1,0,0,1,1,0,0,1,1,1,0,0],\n" +
-        " [0,0,0,0,0,0,0,0,0,0,1,0,0],\n" +
-        " [0,0,0,0,0,0,0,1,1,1,0,0,0],\n" +
-        " [0,0,0,0,0,0,0,1,1,0,0,0,0]]");
+        System.out.println(upperCase("Product of Array Except Self"));;
+//        cleanArray("[[0,0,1,0,0,0,0,1,0,0,0,0,0],\n" +
+//                " [0,0,0,0,0,0,0,1,1,1,0,0,0],\n" +
+//                " [0,1,1,0,1,0,0,0,0,0,0,0,0],\n" +
+//                " [0,1,0,0,1,1,0,0,1,0,1,0,0],\n" +
+//                " [0,1,0,0,1,1,0,0,1,1,1,0,0],\n" +
+//                " [0,0,0,0,0,0,0,0,0,0,1,0,0],\n" +
+//                " [0,0,0,0,0,0,0,1,1,1,0,0,0],\n" +
+//                " [0,0,0,0,0,0,0,1,1,0,0,0,0]]");
     }
-    public static void cleanArray(String s){
+
+    private static String  upperCase(String s) {
+        char[] chars = s.toCharArray();
+        for (int i = 0; i < chars.length; i++) {
+            if ((int) chars[i] == 32) {
+                if ((int) chars[i + 1] > 97) {
+                    chars[i + 1] -= 32;
+                }
+            }
+
+        }
+        return new String(chars).replaceAll(" ", "");
+    }
+
+    public static void cleanArray(String s) {
         s = s.replaceAll("\\[", "{");
         s = s.replaceAll("\\]", "}");
         System.out.println(s);
@@ -31,6 +46,7 @@ cleanArray("[[0,0,1,0,0,0,0,1,0,0,0,0,0],\n" +
             System.out.println("===================");
         }
     }
+
 
     private static void swapValue(int[] a, int i, int j) {
         int temp = a[i];
