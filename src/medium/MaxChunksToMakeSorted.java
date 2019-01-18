@@ -28,6 +28,8 @@ package medium;
 
 public class MaxChunksToMakeSorted {
 
+    private int length;
+
     public static void main(String[] args) {
         int[] a = {1, 0, 2, 3, 4};
         System.out.println(new MaxChunksToMakeSorted().maxChunksToSorted(a));
