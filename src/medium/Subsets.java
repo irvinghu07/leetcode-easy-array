@@ -47,19 +47,23 @@ public class Subsets {
 
     private void generateMatrix(int limit, int[] nums, List<List<Integer>> result) {
         int length = nums.length;
-        for (int i = 0, j = i + 1; i < length && j < length; i++) {
+        for (int i = 0; i < length; i++) {
+            int  j = i + 1;
             int capacity = 0;
-            while (j < length && capacity < limit){
+            while (capacity < limit && j < length) {
                 ArrayList<Integer> temp = new ArrayList<>();
                 temp.add(nums[i]);
                 capacity++;
-                while (capacity < limit) {
-                    temp.add(nums[j]);
+                while (capacity < limit && j < length) {
+                    temp.add(nums[j++]);
                     capacity++;
-                    j++;
                 }
                 result.add(temp);
+                if (limit > 1) {
+                    capacity = 0;
+                }
             }
+
         }
     }
 }
