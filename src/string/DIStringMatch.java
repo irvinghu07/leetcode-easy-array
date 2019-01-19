@@ -3,7 +3,7 @@ package string;
 import java.util.Arrays;
 
 /**
- * @see </a href="https://leetcode.com/problems/di-string-match/">instruction</>
+ * {@see </a href="https://leetcode.com/problems/di-string-match/">instruction</>}
  * Given a string S that only contains "I" (increase) or "D" (decrease), let N = S.length.
  * <p>
  * Return any permutation A of [0, 1, ..., N] such that for all i = 0, ..., N-1:
@@ -37,12 +37,20 @@ public class DIStringMatch {
         System.out.println(Arrays.toString(new DIStringMatch().diStringMatch("IDID")));
     }
 
+
+    /**
+     *  Solution:
+     * {@see <a/ href="https://leetcode.com/problems/di-string-match/discuss/194904/C%2B%2BJavaPython-Straight-Forward">Solution</>}
+     * @param S
+     * @return
+     */
     public int[] diStringMatch(String S) {
 //      I = 73; D = 64
         int n = S.length(), left = 0, right = n;
         int[] res = new int[n + 1];
         char[] chars = S.toCharArray();
-        for (int i = 0; i < n; i++) res[i] = chars[i] == 'I' ? left++ : right--;
+        for (int i = 0; i < n; i++)
+            res[i] = chars[i] == 'I' ? left++ : right--;
         res[n] = left;
         return res;
     }
