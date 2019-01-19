@@ -35,21 +35,54 @@ package math;
 public class KClosestPointsToOrigin {
 
     public static void main(String[] args) {
-        System.out.println(Math.sqrt(4));
-        int[][] a = {{1, 3}, {-2, 2}};
-        System.out.println(new KClosestPointsToOrigin().kClosest(a, 2));
+        int[][] a = {{6, 10}, {-3, 3}, {-2, 5}, {0, 2}};
+        printRes(new KClosestPointsToOrigin().kClosest(a, 3));
     }
 
     public int[][] kClosest(int[][] points, int K) {
-        int min = 0xfffffff, max = 0, row = points.length, cow = points[0].length;
-        if (K == cow) return points;
+        double min = Double.MAX_VALUE, max = 0;
+        int maxIndex = 0, index = 0, row = points.length, cow = points[0].length;
+        if (K == row) return points;
         int[][] res = new int[K][2];
         for (int i = 0; i < row; i++) {
             double distance = 0;
-            for (int j = 0; j < cow; j++) distance += Math.pow(points[i][j], 2);
+            int a = 0, b = 0;
+            for (int j = 0; j < cow; j++) {
+                int val = points[i][j];
+                if (j == 0) a = val;
+                else b = val;
+                distance += Math.pow(val, 2);
+            }
             distance = Math.sqrt(distance);
-            System.out.println(distance);
+            if (index == K) {
+                insertIntoRes(a, b, maxIndex, res);
+            } else {
+                if (distance < min) {
+                    min = distance;
+                }
+                if (distance > max) {
+                    max = distance;
+                    maxIndex = index;
+                }
+                insertIntoRes(a, b, index++, res);
+
+            }
+
         }
         return res;
+    }
+
+    private static void printRes(int[][] res) {
+        for (int i = 0; i < res.length; i++) {
+            for (int j = 0; j < res[0].length; j++) {
+                System.out.print(String.format("%d, ", res[i][j]));
+            }
+            System.out.println();
+        }
+    }
+
+    private void insertIntoRes(int a, int b, int index, int[][] res) {
+        res[index][0] = a;
+        res[index][1] = b;
     }
 }

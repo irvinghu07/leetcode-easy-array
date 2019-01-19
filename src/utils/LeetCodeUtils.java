@@ -11,7 +11,8 @@ public class LeetCodeUtils {
         System.out.println(        upperCase(" K Closest Points to Origin")
         );
 //        System.out.println(upperCase("Product of Array Except Self"));;
-        cleanArray("[[1,3],[-2,2]]");
+        cleanArray("[[6,10],[-3,3],[-2,5],[0,2]]\n" +
+                "3");
     }
 
     private static String  upperCase(String s) {
