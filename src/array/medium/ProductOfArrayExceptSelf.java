@@ -1,4 +1,4 @@
-package medium;
+package array.medium;
 
 /**
  * Development IDE: IntelliJ IDEA
@@ -6,8 +6,6 @@ package medium;
  * Project Name: leetcode-Array
  * Date: 2019-01-09
  */
-
-import java.util.Arrays;
 
 /**
  * Given an array nums of n integers where n > 1,  return an array output such that output[i] is equal to the

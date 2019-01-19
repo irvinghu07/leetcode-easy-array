@@ -1,4 +1,4 @@
-package medium;
+package array.medium;
 
 /**
  * Development IDE: IntelliJ IDEA

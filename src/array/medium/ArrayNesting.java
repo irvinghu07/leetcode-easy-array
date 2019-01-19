@@ -1,4 +1,4 @@
-package medium;
+package array.medium;
 
 /**
  * Development IDE: IntelliJ IDEA
@@ -6,9 +6,6 @@ package medium;
  * Project Name: leetcode-Array
  * Date: 2019-01-10
  */
-
-import java.util.Arrays;
-import java.util.HashSet;
 
 /**
  * @see {<a href="https://leetcode.com/problems/array-nesting/">introduction</a>}

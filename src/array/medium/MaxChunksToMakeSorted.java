@@ -1,4 +1,4 @@
-package medium;
+package array.medium;
 
 /**
  * @see </a href="https://leetcode.com/problems/max-chunks-to-make-sorted/">instruction</>

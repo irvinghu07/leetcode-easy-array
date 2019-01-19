@@ -8,7 +8,7 @@ package utils;
  */
 public class LeetCodeUtils {
     public static void main(String[] args) {
-        System.out.println(        upperCase("Max Chunks To Make Sorted")
+        System.out.println(        upperCase("Combination Sum III")
         );
 //        System.out.println(upperCase("Product of Array Except Self"));;
 //        cleanArray("[[0,0,1,0,0,0,0,1,0,0,0,0,0],\n" +
