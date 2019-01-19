@@ -8,17 +8,10 @@ package utils;
  */
 public class LeetCodeUtils {
     public static void main(String[] args) {
-        System.out.println(        upperCase("Combination Sum III")
+        System.out.println(        upperCase(" K Closest Points to Origin")
         );
 //        System.out.println(upperCase("Product of Array Except Self"));;
-//        cleanArray("[[0,0,1,0,0,0,0,1,0,0,0,0,0],\n" +
-//                " [0,0,0,0,0,0,0,1,1,1,0,0,0],\n" +
-//                " [0,1,1,0,1,0,0,0,0,0,0,0,0],\n" +
-//                " [0,1,0,0,1,1,0,0,1,0,1,0,0],\n" +
-//                " [0,1,0,0,1,1,0,0,1,1,1,0,0],\n" +
-//                " [0,0,0,0,0,0,0,0,0,0,1,0,0],\n" +
-//                " [0,0,0,0,0,0,0,1,1,1,0,0,0],\n" +
-//                " [0,0,0,0,0,0,0,1,1,0,0,0,0]]");
+        cleanArray("[[1,3],[-2,2]]");
     }
 
     private static String  upperCase(String s) {
