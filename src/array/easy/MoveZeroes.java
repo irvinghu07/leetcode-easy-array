@@ -6,6 +6,8 @@ package array.easy; /**
  */
 
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * Given an array nums, write a function to move all 0's to
@@ -28,22 +30,8 @@ public class MoveZeroes {
     }
 
     public void moveZeroes(int[] nums) {
-        int i = 0;
-        int j = nums.length - 1;
-        while (i <= j) {
-            while (nums[i] != 0) {
-                i++;
-            }
-            while (nums[j] == 0) {
-                j--;
-            }
-            swapValue(nums, i, j);
-        }
-    }
-
-    private void swapValue(int[] a, int i, int j) {
-        int temp = a[i];
-        a[i] = a[j];
-        a[j] = temp;
+        Queue<Integer> queue = new LinkedList<>();
+        for (int num : nums) if (0 != num) queue.add(num);
+        for (int i = 0; i < nums.length; i++) nums[i] = !queue.isEmpty() ? queue.remove() : 0;
     }
 }
