@@ -1,4 +1,4 @@
-package math;
+package math.easy;
 
 /**
  * {@see <a href="https://leetcode.com/problems/k-closest-points-to-origin/"></a>}
